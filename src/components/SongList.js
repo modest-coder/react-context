@@ -1,5 +1,5 @@
+import React, { useState, useEffect } from 'react';
 import NewSongForm from './NewSongForm';
-import React, { useState } from 'react';
 import uuid from 'uuid/v1';
 
 const SongList = () => {
@@ -11,6 +11,12 @@ const SongList = () => {
   const addSong = (title) => {
     setSongs([...songs, { id: uuid(), title }]);
   }
+  useEffect(() => {
+    console.log('useEffect hook ran', songs);
+  }, [songs])  // only runs this function when the songs data changes
+  // useEffect(() => {
+  //   doSomethig();
+  // }, [anotherComponentState]) 
   return (
     <div className='song-list'>
       <ul>
